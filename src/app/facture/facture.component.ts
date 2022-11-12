@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from '../services/api.service';
 import { Facture } from '../shared/Model/Facture';
 import { FactureService } from '../shared/Service/Facture.service';
 
@@ -15,7 +16,7 @@ export class FactureComponent implements OnInit {
   facture!: Facture;
   closeResult!: string;
 
-  constructor(private factureService: FactureService, private modalService: NgbModal) {
+  constructor(private factureService: FactureService, private modalService: NgbModal, private apiService: ApiService) {
   }
 
   ngOnInit(): void {
