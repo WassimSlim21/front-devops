@@ -1,6 +1,6 @@
 FROM node:14.17.0
 
-WORKDIR /root/front-devop
+WORKDIR .
 
 COPY package*.json /usr/src/app/
 
