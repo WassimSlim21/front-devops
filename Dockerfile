@@ -1,8 +1,8 @@
 FROM node:14.17.0
 
-WORKDIR .
+WORKDIR /app
 
-COPY /package*.json .
+COPY package.json .
 
 RUN npm install
 
@@ -16,4 +16,4 @@ COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
 # Copy the default nginx.conf provided by tiangolo/node-frontend
 COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD ["npm", "start"]
+CMD npm run start
