@@ -6,7 +6,7 @@ COPY package.json .
 
 RUN npm install -g @angular/cli @angular-devkit/build-angular
 
-RUN npm install --omit=dev
+RUN npm install
 
 EXPOSE 4200
 
