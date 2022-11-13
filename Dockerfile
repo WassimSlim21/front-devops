@@ -2,7 +2,7 @@ FROM node:14.17.0
 
 WORKDIR /root
 
-COPY package*.json /root
+COPY package*.json /usr/src/app/front-devops/
 
 RUN npm install
 
