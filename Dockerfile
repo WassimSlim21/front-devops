@@ -1,19 +1,17 @@
 FROM node:latest
 
-WORKDIR /app
+WORKDIR .
 
-COPY . .
+COPY . /usr/src/app/
 
-RUN npm install
+RUN npm install && npm run ng build
 
-EXPOSE 4200
+FROM nginx:alpine
 
-ARG configuration=production
-RUN npm run build -- --output-path=./dist/out --configuration $configuration
-# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
-FROM nginx:1.15
-COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
-# Copy the default nginx.conf provided by tiangolo/node-frontend
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /usr/share/nginx/html
 
-CMD ["npm", "start"]
+RUN rm -rf ./*
+
+COPY --from=build-stage /app/dist/devops-front .
+
+ENTRYPOINT [ "nginx" , "-g" , "daemon off;" ]
