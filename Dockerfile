@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:latest AS build
 
 WORKDIR /app
 
@@ -8,4 +8,4 @@ RUN npm install --legacy-peer-deps
 
 EXPOSE 4200
 
-CMD npm run start
+RUN npm run build
