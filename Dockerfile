@@ -1,6 +1,6 @@
 FROM node:14.17.0
 
-WORKDIR /root/front-devops
+WORKDIR /root/src/app/front-achat
 
 COPY package*.json ./
 
