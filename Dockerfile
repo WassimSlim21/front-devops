@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /app
 
-COPY package.json .
+COPY package.json package-lock.json ./
 
 RUN npm install -g @angular/cli @angular-devkit/build-angular
 
