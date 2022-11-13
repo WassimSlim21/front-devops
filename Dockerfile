@@ -8,7 +8,7 @@ RUN npm install -g npm@latest
 
 RUN npm install -g @angular/cli @angular-devkit/build-angular
 
-RUN npm update --force
+RUN npm install
 
 EXPOSE 4200
 
