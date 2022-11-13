@@ -1,8 +1,8 @@
 FROM node:latest
 
-WORKDIR /front-devops
+WORKDIR /app
 
-COPY package*.json /usr/src/app/front-devops/
+COPY . .
 
 RUN npm install
 
