@@ -1,11 +1,12 @@
-FROM node:latest AS build
-
+FROM node:14.2.0-alpine3.11 as build
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+RUN npm install -g @angular/cli
 
-RUN npm install --legacy-peer-deps
+COPY ./package.json .
+RUN npm install
+COPY . .
+RUN ng build
 
-EXPOSE 4200
-
-RUN npm run build
+FROM nginx as runtime
+COPY --from=build /app/dist/MyAngularApp /usr/share/nginx/html
