@@ -10,7 +10,6 @@ EXPOSE 4200
 
 #CMD npm run start
 
-
 # Run the angular in product
 RUN npm run build
 
