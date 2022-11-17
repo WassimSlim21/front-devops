@@ -1,12 +1,9 @@
 version: "3.7"
 services:
-  dashboard:
-    build:
-     context: .
-     dockerfile: Dockerfile
+  front:
+    depends_on:
+      - app
+    build: 
+      context: ./Angular/crud-tuto-front/
     ports:
-      - "4200:4200"
-      - "49153:49153"
-    volumes:
-      - "/app/node_modules"
-      - ".:/app"
+      - "4201:4201"
